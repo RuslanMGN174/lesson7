@@ -7,6 +7,7 @@ import lombok.ToString;
 import ru.knyazev.lesson7.service.ProductDTO;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity
@@ -28,7 +29,7 @@ public class Product {
     @Column(length = 128, unique = true, nullable = false)
     private String title;
 
-    @Column(nullable = false)
+    @Column
     private BigDecimal cost;
 
 

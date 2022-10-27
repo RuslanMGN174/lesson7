@@ -7,6 +7,8 @@ public interface ProductService {
 
     List<ProductDTO> findAll();
 
+    List<ProductDTO> findWithFilter(String productFilter);
+
     Optional<ProductDTO> findById(long id);
 
     void save(ProductDTO product);
