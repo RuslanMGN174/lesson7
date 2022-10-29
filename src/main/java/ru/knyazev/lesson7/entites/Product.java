@@ -13,7 +13,6 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "products")
 @NoArgsConstructor
-@ToString
 @Getter
 @Setter
 @NamedQueries({
@@ -29,6 +28,7 @@ public class Product {
     @Column(length = 128, unique = true, nullable = false)
     private String title;
 
+    @NotNull
     @Column
     private BigDecimal cost;
 

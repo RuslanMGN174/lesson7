@@ -25,8 +25,8 @@ public class ProductDTO {
     @NotEmpty
     private String title;
 
-    @DecimalMin(value = "0.0", inclusive = false)
-    @Digits(integer = Integer.MAX_VALUE, fraction = 2)
+    @DecimalMin(value = "0", inclusive = true)
+    @Digits(integer = 3, fraction = 2)
     private BigDecimal cost;
 
     public ProductDTO(String title, BigDecimal cost) {

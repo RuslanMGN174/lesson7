@@ -25,7 +25,10 @@ public class ProductController {
     @GetMapping
     public String listPage(
             Model model,
-            @RequestParam("productFilter") Optional<String> productFilter) {
+            @RequestParam("productFilter") Optional<String> productFilter,
+            @RequestParam("page") Optional<Integer> page,
+            @RequestParam("size") Optional<Integer> size
+            ) {
 
         List<ProductDTO> productDTOList;
 
