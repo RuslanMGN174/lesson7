@@ -9,6 +9,8 @@ import ru.knyazev.lesson7.service.ProductDTO;
 import ru.knyazev.lesson7.service.ProductService;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/product")
@@ -21,13 +23,24 @@ public class ProductController {
     }
 
     @GetMapping
-    public String listPage(Model model){
-        model.addAttribute("products", productService.findAll());
+    public String listPage(
+            Model model,
+            @RequestParam("productFilter") Optional<String> productFilter) {
+
+        List<ProductDTO> productDTOList;
+
+        if (productFilter.isPresent() && !productFilter.get().isEmpty()){
+            productDTOList = productService.findWithFilter(productFilter.get());
+        } else {
+            productDTOList = productService.findAll();
+        }
+
+        model.addAttribute("products", productDTOList);
         return "product";
     }
 
     @PostMapping("/update")
-    public String update(@Valid ProductDTO product, BindingResult result) {
+    public String update(@Valid @ModelAttribute("product") ProductDTO product, BindingResult result) {
         if (result.hasErrors()) {
             return "product_form";
         }
@@ -36,7 +49,7 @@ public class ProductController {
     }
 
     @GetMapping("/new")
-    public String create(Model model){
+    public String create(Model model) {
         model.addAttribute("product", new ProductDTO());
         return "product_form";
     }

@@ -21,6 +21,23 @@
             <a class="btn btn-primary" th:href="@{/product/new}">Добавить</a>
         </div>
 
+        <div class="col-12 mt-3">
+            <form class="form-inline" th:method="get">
+                <div class="form-group mb-2 mr-2">
+                    <label for="productFilter" class="sr-only">Product filter</label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            id="productFilter"
+                            name="productFilter"
+                            th:value="${param.productFilter}"
+                            placeholder="Product filter"
+                    >
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Apply</button>
+            </form>
+        </div>
+
         <div class="col-12">
             <table class="table table-bordered my-2">
                 <thead>

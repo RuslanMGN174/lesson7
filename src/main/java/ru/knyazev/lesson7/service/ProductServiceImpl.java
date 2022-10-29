@@ -27,6 +27,13 @@ public class ProductServiceImpl implements ProductService{
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public List<ProductDTO> findWithFilter(String productFilter) {
+        return repository.findProductByTitleLike(productFilter).stream()
+                .map(ProductDTO::new)
+                .collect(Collectors.toList());
+    }
+
     @Transactional
     @Override
     public Optional<ProductDTO> findById(long id) {
