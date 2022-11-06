@@ -21,29 +21,29 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public List<ProductDTO> findAll() {
+    public List<ru.knyazev.lesson7.service.ProductDTO> findAll() {
         return repository.findAll().stream()
-                .map(ProductDTO::new)
+                .map(ru.knyazev.lesson7.service.ProductDTO::new)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<ProductDTO> findWithFilter(String productFilter) {
+    public List<ru.knyazev.lesson7.service.ProductDTO> findWithFilter(String productFilter) {
         return repository.findProductByTitleLike(productFilter).stream()
-                .map(ProductDTO::new)
+                .map(ru.knyazev.lesson7.service.ProductDTO::new)
                 .collect(Collectors.toList());
     }
 
     @Transactional
     @Override
-    public Optional<ProductDTO> findById(long id) {
+    public Optional<ru.knyazev.lesson7.service.ProductDTO> findById(long id) {
         return repository.findById(id)
-                .map(ProductDTO::new);
+                .map(ru.knyazev.lesson7.service.ProductDTO::new);
     }
 
     @Transactional
     @Override
-    public void save(ProductDTO product) {
+    public void save(ru.knyazev.lesson7.service.ProductDTO product) {
         Product productToSave = new Product(product);
         repository.save(productToSave);
         if (product.getId() == null){
