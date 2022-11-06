@@ -1,0 +1,30 @@
+GET http://localhost:8080/app/api/v1/product/all
+
+###
+
+GET http://localhost:8080/app/api/v1/product/1
+
+###
+
+POST http://localhost:8080/app/api/v1/product
+Content-Type: application/json
+
+{
+  "title": "Cookies",
+  "cost": 10.00
+}
+
+###
+
+DELETE http://localhost:8080/app/api/v1/product/7
+
+###
+
+PUT http://localhost:8080/app/api/v1/product
+Content-Type: application/json
+
+{
+  "id": 8,
+  "title": "Cheese",
+  "cost": 35
+}
